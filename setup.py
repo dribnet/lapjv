@@ -11,27 +11,27 @@ if sys.version_info[0] < 3:
     import __builtin__ as builtins
 else:
     import builtins
-builtins.__LAPJV_SETUP__ = True
+builtins.__lapjv1_SETUP__ = True
 
-DISTNAME = 'python-lapjv'
-DESCRIPTION = 'Python wrapper of LAPJV'
+DISTNAME = 'python-lapjv1'
+DESCRIPTION = 'Python wrapper of lapjv1'
 LONG_DESCRIPTION = """
-**python-lapjv** is a Python wrapper around a linear assignment problem solver
-by Jonker and Volgenant (LAPJV).
+**python-lapjv1** is a Python wrapper around a linear assignment problem solver
+by Jonker and Volgenant (lapjv1).
 
 The wrapper code is under a 2-clause BSD license, however, the original code is
-under a special restrictive license. Please check the lapjv/interal/README.md
+under a special restrictive license. Please check the lapjv1/interal/README.md
 for details on whether you are allowed to use it.
 """
 MAINTAINER = 'Tomas Kazmar'
 MAINTAINER_EMAIL = 'tomash.kazmar@seznam.cz'
-URL = 'https://github.com/gatagat/lapjv'
-LICENSE = 'BSD (wrapper) + restrictive license (LAPJV)'
+URL = 'https://github.com/gatagat/lapjv1'
+LICENSE = 'BSD (wrapper) + restrictive license (lapjv1)'
 DOWNLOAD_URL = 'http://'
 
-import lapjv
+import lapjv1
 
-VERSION = lapjv.__version__
+VERSION = lapjv1.__version__
 
 NUMPY_MIN_VERSION = '1.10.1'
 
@@ -69,9 +69,9 @@ class CleanCommand(Clean):
         cwd = os.path.abspath(os.path.dirname(__file__))
         remove_c_files = not os.path.exists(os.path.join(cwd, 'PKG-INFO'))
         if remove_c_files:
-            if os.path.exists('lapjv/_lapjv.c'):
-                os.unlink('lapjv/_lapjv.c')
-        for dirpath, dirnames, filenames in os.walk('lapjv'):
+            if os.path.exists('lapjv1/_lapjv1.c'):
+                os.unlink('lapjv1/_lapjv1.c')
+        for dirpath, dirnames, filenames in os.walk('lapjv1'):
             for filename in filenames:
                 if any(filename.endswith(suffix) for suffix in
                        (".so", ".pyd", ".dll", ".pyc")):
@@ -92,7 +92,7 @@ def cythonize(cython_file, gen_file):
             raise ImportError('Installed cython is too old (0.21 required), '
                               'please "pip install -U cython".')
     except ImportError:
-        raise ImportError('Building lapjv requires cython, '
+        raise ImportError('Building lapjv1 requires cython, '
                           'please "pip install cython".')
         pass
 
@@ -141,7 +141,7 @@ def get_numpy_status():
 
 
 def get_wrapper_pyx():
-    wrapper_pyx_file = os.path.join('lapjv', '_lapjv.pyx')
+    wrapper_pyx_file = os.path.join('lapjv1', '_lapjv1.pyx')
     return wrapper_pyx_file
 
 
@@ -162,13 +162,13 @@ def configuration(parent_package='', top_path=None):
         delegate_options_to_subpackages=True,
         quiet=True)
 
-    config.add_data_dir('lapjv/tests')
+    config.add_data_dir('lapjv1/tests')
 
     wrapper_pyx_file = get_wrapper_pyx()
     wrapper_c_file = os.path.splitext(wrapper_pyx_file)[0] + '.c'
     lap_c_file = os.path.join(os.path.dirname(wrapper_pyx_file), 'internal', 'lap.c')
-    config.add_extension('lapjv._lapjv', sources=[wrapper_c_file, lap_c_file],
-                         include_dirs=[get_numpy_include_dirs(), 'lapjv/internal'])
+    config.add_extension('lapjv1._lapjv1', sources=[wrapper_c_file, lap_c_file],
+                         include_dirs=[get_numpy_include_dirs(), 'lapjv1/internal'])
 
     return config
 
@@ -179,7 +179,7 @@ def setup_package():
                     maintainer_email=MAINTAINER_EMAIL,
                     description=DESCRIPTION,
                     license=LICENSE,
-                    packages=['lapjv'],
+                    packages=['lapjv1'],
                     url=URL,
                     version=VERSION,
                     download_url=DOWNLOAD_URL,
@@ -223,7 +223,7 @@ def setup_package():
                 raise ImportError('Installed numpy is too old, '
                                   'please "pip install -U numpy".')
             else:
-                raise ImportError('lapjv requires numpy, '
+                raise ImportError('lapjv1 requires numpy, '
                                   'please "pip install numpy".')
 
         from numpy.distutils.core import setup

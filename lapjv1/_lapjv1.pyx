@@ -21,7 +21,7 @@ cdef extern from "internal/lap.h":
             double *v)
 
 
-def lapjv(cnp.ndarray cost not None, char extend_cost=False,
+def lapjv1(cnp.ndarray cost not None, char extend_cost=False,
           double cost_limit=np.inf):
     '''
     Solve linear assignment problem using Jonker-Volgenant algorithm.

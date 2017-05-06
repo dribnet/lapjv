@@ -16,7 +16,7 @@ from nose.tools import raises
 from gzip import GzipFile
 import numpy as np
 import os
-from lapjv import lapjv
+from lapjv1 import lapjv1
 
 large = 1000
 cost = np.array([[large, 2, 11, 10, 8, 7, 6, 5],

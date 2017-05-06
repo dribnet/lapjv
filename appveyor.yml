@@ -56,9 +56,9 @@ install:
   - ps: "ls dist"
 
   # Install the generated wheel package to test it
-  - "pip install --pre --no-index --find-links dist/ python-lapjv"
+  - "pip install --pre --no-index --find-links dist/ python-lapjv1"
 
-# Not a .NET project, we build lapjv in the install step instead
+# Not a .NET project, we build lapjv1 in the install step instead
 build: false
 
 test_script:
@@ -67,7 +67,7 @@ test_script:
   - "cd C:\\"
 
   # Run unit tests with nose
-  - "python -c \"import nose; nose.main()\" -v -s lapjv"
+  - "python -c \"import nose; nose.main()\" -v -s lapjv1"
 
 artifacts:
   # Archive the generated wheel package in the ci.appveyor.com build report.
