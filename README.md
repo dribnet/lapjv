@@ -1,11 +1,7 @@
-[![Travis](https://travis-ci.org/gatagat/lapjv1.svg?branch=master)](https://travis-ci.org/gatagat/lapjv1/)
-[![Appveyor](https://ci.appveyor.com/api/projects/status/github/gatagat/lapjv1?branch=master&svg=true)](https://ci.appveyor.com/project/gatagat/lapjv1/history)
-![Python 2.7](https://img.shields.io/badge/python-2.7-blue.svg)
-![Python 3.5](https://img.shields.io/badge/python-3.5-blue.svg)
-![Python 3.6](https://img.shields.io/badge/python-3.6-blue.svg)
-
 python-lapjv1 - Python wrapper of lapjv1
 ======================================
+
+NOTE: this is a simple fork of [this project](https://github.com/gatagat/lapjv1.git) because of a naming conflict with [this project](https://github.com/src-d/lapjv).
 
 lapjv1 is an algorithm by Jonker and Volgenant [1] to solve the linear
 assignment problem. This repository contains the code by Jonker
@@ -36,13 +32,13 @@ Python-lapjv1 requires:
 
 #### Using pip
 
-    pip install git+git://github.com/gatagat/lapjv1.git
+    pip install git+git://github.com/dribnet/lapjv1.git
 
 #### Install from source
 
   1. Clone
 
-         git clone https://github.com/gatagat/lapjv1.git
+         git clone https://github.com/dribnet/lapjv1.git
 
   2. Under the root of the repo
 
